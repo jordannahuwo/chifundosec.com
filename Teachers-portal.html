@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chifundo Inclusive Secondary School - Teachers Portal</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .navbar-custom {
+      background-color: #6a1b9a;
+    }
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: white !important;
+    }
+    .portal-header {
+      background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%);
+      color: white;
+      padding: 40px 0;
+      margin-bottom: 30px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .card-custom {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+    .card-custom-header {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 20px;
+      font-weight: 600;
+    }
+    .btn-portal {
+      background-color: #6a1b9a;
+      color: white;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: 500;
+      margin: 5px 0;
+      width: 100%;
+      text-align: left;
+      transition: all 0.3s;
+    }
+    .btn-portal:hover {
+      background-color: #4a148c;
+      transform: translateX(5px);
+    }
+    .btn-portal i {
+      margin-right: 10px;
+    }
+    .nav-buttons {
+      margin: 20px 0;
+    }
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-chalkboard-teacher"></i> Teachers Portal
+      </a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <div class="portal-header text-center">
+    <div class="container">
+      <h1><i class="fas fa-university"></i> Chifundo Inclusive Secondary School</h1>
+      <p class="lead">Academic Management System for Teachers</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons text-center">
+      <a href="index.html" class="btn btn-primary">
+        <i class="fas fa-home"></i> Back to Home
+      </a>
+    </div>
+    
+    <!-- Submit Scores Card -->
+    <div class="card card-custom">
+      <div class="card-header card-custom-header">
+        <i class="fas fa-upload"></i> Submit Student Scores
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="https://script.google.com/macros/s/AKfycbyZjG6wFOjYgye73jtuHm1fuXwif8QtFashV9-bkYq5KCuxMVJVuLgI_DZLwn4qkJR-/exec" 
+               class="btn btn-portal" target="_blank">
+              <i class="fas fa-link"></i> Submit Scores - Link 1
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="https://script.google.com/macros/s/AKfycbztSwvQz0YekykakdCgjE7Wrsfj3t8Khm8IbDpqq3x0kWXxoDDRLu3hY_VDh6C-ATRR/exec" 
+               class="btn btn-portal" target="_blank">
+              <i class="fas fa-link"></i> Submit Scores - Link 2
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="https://script.google.com/macros/s/AKfycbyzVzpwRiJQGuvlCV2lg8frTiXVZhqJWmHABjbQ20jNskT156iWg7EptPIY65q1o3AG/exec" 
+               class="btn btn-portal" target="_blank">
+              <i class="fas fa-link"></i> Submit Scores - Link 3
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="https://script.google.com/macros/s/AKfycbzK01zhIWzhkJqq29Qb8ch_V_2Nfs8_0aY22uHTTAXv_7v1TVakFGCq4v7Polt2Uhf_cw/exec" 
+               class="btn btn-portal" target="_blank">
+              <i class="fas fa-link"></i> Submit Scores - Link 4
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Download Reports Card -->
+    <div class="card card-custom">
+      <div class="card-header card-custom-header">
+        <i class="fas fa-download"></i> Download Reports
+      </div>
+      <div class="card-body">
+        <a href="https://script.google.com/macros/s/AKfycbxSdL3OC7QSc2z5Eis47q6Q7dKQzE12eBaqB-i67igJmF26mzm1empfQUmQ03QdwSPkwQ/exec" 
+           class="btn btn-portal" target="_blank">
+          <i class="fas fa-file-pdf"></i> Download Results Summary
+        </a>
+      </div>
+    </div>
+    
+    <!-- Quick Links Card -->
+    <div class="card card-custom">
+      <div class="card-header card-custom-header">
+        <i class="fas fa-link"></i> Quick Links
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="index.html" class="btn btn-portal">
+              <i class="fas fa-home"></i> Main Homepage
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="#contact" class="btn btn-portal">
+              <i class="fas fa-envelope"></i> Contact Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p>&copy; <span id="current-year"></span> Chifundo Inclusive Secondary School. All rights reserved.</p>
+      <p>For technical support, contact: <a href="https://wa.me/265888866269" style="color: #4fc3f7;" target="_blank">Developer WhatsApp</a></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

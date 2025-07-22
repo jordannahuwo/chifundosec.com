@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chifundo Inclusive Secondary School - Student Results Portal</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .navbar-custom {
+      background-color: #2e7d32;
+    }
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: white !important;
+    }
+    .portal-header {
+      background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+      color: white;
+      padding: 40px 0;
+      margin-bottom: 30px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .card-custom {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+    .card-custom-header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      font-weight: 600;
+    }
+    .btn-portal {
+      background-color: #2e7d32;
+      color: white;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: 500;
+      margin: 5px 0;
+      width: 100%;
+      text-align: left;
+      transition: all 0.3s;
+    }
+    .btn-portal:hover {
+      background-color: #1b5e20;
+      transform: translateX(5px);
+    }
+    .btn-portal i {
+      margin-right: 10px;
+    }
+    .nav-buttons {
+      margin: 20px 0;
+    }
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    .result-link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-user-graduate"></i> Student Results Portal
+      </a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <div class="portal-header text-center">
+    <div class="container">
+      <h1><i class="fas fa-university"></i> Chifundo Inclusive Secondary School</h1>
+      <p class="lead">Access Your Academic Results and Information</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons text-center">
+      <a href="index.html" class="btn btn-success">
+        <i class="fas fa-home"></i> Back to Home
+      </a>
+    </div>
+    
+    <!-- Results Links Card -->
+    <div class="card card-custom">
+      <div class="card-header card-custom-header">
+        <i class="fas fa-poll"></i> View Your Results
+      </div>
+      <div class="card-body">
+        <div class="result-link-grid">
+          <a href="https://script.google.com/macros/s/AKfycbw4Arkd7ntqZlDcttEhzoKrAesSLubPLt1t84TY6q1PRH6Wb8bxep8CERXqVBRa2QItpg/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 1
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycbxLDB5bgyBwF5yU-AVn-1lmNzDmYrJLRa2naDSML0KkGEusx0SlmgS3u2aCHB0DFGTleQ/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 2
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycby5PfgSeo7lWfdoQto1ccoIVySRyCra45BwUw4rj0W1DXu6uvEeev-PEFeIHi5ssTr-jQ/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 3
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycby3LfveNJltBRyD0R619BtDqtljv1GZu4H6qmb0MZnDTQ0OcF2ed-nEcXUt3JaKs5Xd/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 4
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycbwSe_HeUAigVjBiN-rmcq0FPiJRKsLBBtw2VGGhLWlMCrIvT3WeQ0MpjdMdI4HDGnkbZQ/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 5
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycbxAk3Tly0MuRPGxlEPaevLFRn4zDrcV4Ua5aDPKqej1Z57hG1zY0g6l0QbtmYr-PrErGA/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 6
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycbxqZ0ZguQd2VBsEDG16_PDstM0os9-KuWRByM6b-Jj0DgobiPbX8FZFwiefgocbLda_EA/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 7
+          </a>
+          <a href="https://script.google.com/macros/s/AKfycbzMZ52d7CcvcxO069KOM9af9M17-wrI3CvWAkYDdmNVs9XV2HR6VMKsu0QfGCxDrMCm/exec" 
+             class="btn btn-portal" target="_blank">
+            <i class="fas fa-link"></i> Results Link 8
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick Links Card -->
+    <div class="card card-custom">
+      <div class="card-header card-custom-header">
+        <i class="fas fa-link"></i> Quick Links
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="index.html" class="btn btn-portal">
+              <i class="fas fa-home"></i> Main Homepage
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="#contact" class="btn btn-portal">
+              <i class="fas fa-envelope"></i> Contact Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p>&copy; <span id="current-year"></span> Chifundo Inclusive Secondary School. All rights reserved.</p>
+      <p>For technical support, contact: <a href="https://wa.me/265888866269" style="color: #4fc3f7;" target="_blank">Developer WhatsApp</a></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
