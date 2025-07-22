@@ -1,0 +1,162 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal - Chifundo Inclusive Private Secondary School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter bg-gray-100 text-gray-800" onload="promptAdminLogin()">
+  <!-- Header -->
+  <header class="bg-blue-800 text-white sticky top-0 z-10 shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Chifundo Inclusive Private Secondary School - Admin Portal</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-300 transition">Back to Main Site</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Admin Portal Section (Hidden by Default) -->
+  <section id="admin-portal" class="hidden py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Admin Portal</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Student Database -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Student Database</h3>
+          <table class="w-full text-left">
+            <thead>
+              <tr class="bg-blue-100">
+                <th class="p-2">ID</th>
+                <th class="p-2">Name</th>
+                <th class="p-2">Grade</th>
+                <th class="p-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2">001</td>
+                <td class="p-2">John Mbewe</td>
+                <td class="p-2">Form 4</td>
+                <td class="p-2">Active</td>
+              </tr>
+              <tr>
+                <td class="p-2">002</td>
+                <td class="p-2">Grace Phiri</td>
+                <td class="p-2">Form 3</td>
+                <td class="p-2">Active</td>
+              </tr>
+              <tr>
+                <td class="p-2">003</td>
+                <td class="p-2">Tiwonge Banda</td>
+                <td class="p-2">Form 2</td>
+                <td class="p-2">Active</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- School Fees -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">School Fees</h3>
+          <table class="w-full text-left">
+            <thead>
+              <tr class="bg-blue-100">
+                <th class="p-2">Student ID</th>
+                <th class="p-2">Name</th>
+                <th class="p-2">Amount Due</th>
+                <th class="p-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2">001</td>
+                <td class="p-2">John Mbewe</td>
+                <td class="p-2">MWK 150,000</td>
+                <td class="p-2">Paid</td>
+              </tr>
+              <tr>
+                <td class="p-2">002</td>
+                <td class="p-2">Grace Phiri</td>
+                <td class="p-2">MWK 50,000</td>
+                <td class="p-2">Pending</td>
+              </tr>
+              <tr>
+                <td class="p-2">003</td>
+                <td class="p-2">Tiwonge Banda</td>
+                <td class="p-2">MWK 150,000</td>
+                <td class="p-2">Paid</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-800 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-lg font-semibold">Chifundo Inclusive Private Secondary School</p>
+      <p class="mb-4">Education for All Since 2005</p>
+      <p>© Chifundo Inclusive Private Secondary School. All rights reserved.</p>
+      <p>Designed with ❤️ for our students</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Admin Portal Password Validation -->
+  <script>
+    function promptAdminLogin() {
+      const password = prompt("Please enter the Admin Portal password:");
+      if (password === "chifu004") {
+        document.getElementById("admin-portal").classList.remove("hidden");
+      } else {
+        alert("Incorrect password. Access denied.");
+        window.location.href = "index.html"; // Redirect to main page on incorrect password
+      }
+    }
+  </script>
+</body>
+</html>
