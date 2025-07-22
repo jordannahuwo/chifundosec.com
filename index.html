@@ -1,187 +1,124 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chifundo Inclusive Private Secondary School</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .logo {
+      max-width: 150px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
 </head>
-<body class="font-inter bg-gray-100 text-gray-800">
-  <!-- Header -->
-  <header class="bg-blue-800 text-white sticky top-0 z-10 shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center">
-        <div class="text-2xl font-bold bg-white text-blue-800 px-3 py-1 rounded">CIPS</div>
-        <h1 class="text-2xl font-bold ml-2">Chifundo Inclusive Private Secondary School</h1>
-      </div>
-      <nav>
-        <ul class="flex space-x-6">
-          <li><a href="#about" class="hover:text-blue-300 transition">About</a></li>
-          <li><a href="#features" class="hover:text-blue-300 transition">Features</a></li>
-          <li><a href="#testimonials" class="hover:text-blue-300 transition">Testimonials</a></li>
-          <li><a href="#contact" class="hover:text-blue-300 transition">Contact Us</a></li>
-        </ul>
-      </nav>
-    </div>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/1tWcX4xx IMG-20250721-WA0039.jpg" alt="Chifundo Inclusive Private Secondary School Logo" class="logo">
+    <h1>Chifundo Inclusive Private Secondary School</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Chifundo Inclusive Private Secondary School</h2>
-      <p class="text-lg md:text-xl mb-8">Empowering all students through inclusive education and digital innovation.</p>
-      <a href="#portals" class="bg-white text-blue-800 px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition">Access Portals</a>
-    </div>
-  </section>
+  <main>
+    <section id="welcome">
+      <h2>Welcome to Chifundo Inclusive Private Secondary School</h2>
+      <p>Empowering all students through inclusive education and digital innovation.</p>
+      <a href="#portals">Access Portals</a>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">About Our School</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-4">Our Mission</h3>
-          <p>Chifundo Inclusive Private Secondary School, established in 2005, is committed to providing quality education for all students, including those with special needs.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-4">Inclusive Approach</h3>
-          <p>We ensure every student receives the support they need to thrive academically and socially, celebrating diversity and fostering potential.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-4">Our Facilities</h3>
-          <p>With state-of-the-art facilities and dedicated educators, we achieve outstanding academic results while focusing on character and community.</p>
-        </div>
+    <section id="about">
+      <h2>About Our School</h2>
+      <div>
+        <h3>Our Mission</h3>
+        <p>Chifundo Inclusive Private Secondary School, established in 2005, is committed to providing quality education for all students, including those with special needs.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section id="features" class="bg-gray-200 py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-4">Inclusive Education</h3>
-          <p>Tailored support and resources to ensure all students, regardless of ability, succeed in their academic journey.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-4">Performance Tracking</h3>
-          <p>Monitor and analyze student performance across subjects with detailed reports and analytics.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-4">Report Generation</h3>
-          <p>Generate comprehensive PDF reports to track academic progress and achievements.</p>
-        </div>
+      <div>
+        <h3>Inclusive Approach</h3>
+        <p>We ensure every student receives the support they need to thrive academically and socially, celebrating diversity and fostering potential.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Portals Section -->
-  <section id="portals" class="py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-12">Access Your Portal</h2>
-      <div class="flex justify-center space-x-4">
-        <a href="teachers-portal.html" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">Teachers Portal</a>
-        <a href="student-portal.html" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">Students Results Portal</a>
-        <a href="admin.html" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">Admin Portal</a>
+      <div>
+        <h3>Our Facilities</h3>
+        <p>With state-of-the-art facilities and dedicated educators, we achieve outstanding academic results while focusing on character and community.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="bg-gray-200 py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">What Our Community Says</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <p class="italic mb-4">"Chifundo's inclusive approach has transformed my child's educational experience. The support and resources provided are exceptional."</p>
-          <p class="font-semibold">- Mrs. J. Banda, Parent</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <p class="italic mb-4">"Teaching at Chifundo is rewarding because we see every student succeed in their own way. The digital tools make our work more effective."</p>
-          <p class="font-semibold">- Mr. T. Phiri, Teacher</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <p class="italic mb-4">"Our results management system has revolutionized how we track student progress, making it easier to provide targeted support."</p>
-          <p class="font-semibold">- Mrs. K. Mwale, Headteacher</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <p class="italic mb-4">"As a student with special needs, I've found Chifundo to be the most welcoming and supportive environment."</p>
-          <p class="font-semibold">- T. Gondwe, Student</p>
-        </div>
+    <section id="features">
+      <h2>Key Features</h2>
+      <div>
+        <h3>Inclusive Education</h3>
+        <p>Tailored support and resources to ensure all students, regardless of ability, succeed in their academic journey.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4">School Address</h3>
-          <p>Chifundo Inclusive Private Secondary School<br>P.O. Box 1234<br>Blantyre, Malawi</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
-          <p>Email: info@chifundoss.edu.mw<br>Phone: 0123456789<br>WhatsApp: 0123456789</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-4">Technical Support</h3>
-          <p>Developer WhatsApp: 0888866269</p>
-        </div>
+      <div>
+        <h3>Performance Tracking</h3>
+        <p>Monitor and analyze student performance across subjects with detailed reports and analytics.</p>
       </div>
-    </div>
-  </section>
+      <div>
+        <h3>Report Generation</h3>
+        <p>Generate comprehensive PDF reports to track academic progress and achievements.</p>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-blue-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p class="text-lg font-semibold">Chifundo Inclusive Private Secondary School</p>
-      <p class="mb-4">Education for All Since 2005</p>
-      <p>© Chifundo Inclusive Private Secondary School. All rights reserved.</p>
-      <p>Designed with ❤️ for our students</p>
-    </div>
+    <section id="portals">
+      <h2>Access Your Portal</h2>
+      <a href="#">Teachers Portal</a>
+      <a href="#"> تخصصی Results Portal</a>
+      <a href="#">Admin Portal</a>
+    </section>
+
+    <section id="testimonials">
+      <h2>What Our Community Says</h2>
+      <div>
+        <p>"Chifundo's inclusive approach has transformed my child's educational experience. The support and resources provided are exceptional."</p>
+        <p>- Mrs. J. Banda, Parent</p>
+      </div>
+      <div>
+        <p>"Teaching at Chifundo is rewarding because we see every student succeed in their own way. The digital tools make our work more effective."</p>
+        <p>- Mr. T. Phiri, Teacher</p>
+      </div>
+      <div>
+        <p>"Our results management system has revolutionized how we track student progress, making it easier to provide targeted support."</p>
+        <p>- Mrs. K. Mwale, Headteacher</p>
+      </div>
+      <div>
+        <p>"As a student with special needs, I've found Chifundo to be the most welcoming and supportive environment."</p>
+        <p>- T. Gondwe, Student</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div>
+        <h3>School Address</h3>
+        <p>Chifundo Inclusive Private Secondary School<br>P.O. Box 1234<br>Blantyre, Malawi</p>
+      </div>
+      <div>
+        <h3>Contact Information</h3>
+        <p>Email: info@chifundoss.edu.mw<br>Phone: 0123456789<br>WhatsApp: 0123456789</p>
+      </div>
+      <div>
+        <h3>Technical Support</h3>
+        <p>Developer WhatsApp: 0888866269</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Chifundo Inclusive Private Secondary School</p>
+    <p>Education for All Since 2005</p>
+    <p>© Chifundo Inclusive Private Secondary School. All rights reserved.</p>
+    <p>Designed with ❤️ for our students</p>
   </footer>
 </body>
 </html>
