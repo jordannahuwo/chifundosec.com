@@ -66,8 +66,8 @@
       right: 0;
       width: 200px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      max-height: 80vh; /* Limit height to 80% of viewport height */
-      overflow-y: auto; /* Enable vertical scrolling */
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
     nav ul.active {
@@ -123,7 +123,7 @@
       z-index: 1;
     }
 
-    #welcome h2, #welcome p, #welcome a {
+    #welcome h2, #welcome p, #welcome .portal-card {
       position: relative;
       z-index: 2;
     }
@@ -138,18 +138,47 @@
       margin-bottom: 1.5rem;
     }
 
-    #welcome a {
+    /* Portal Card Styles */
+    .portal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .portal-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portal-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .portal-card h3 {
+      font-size: 1.4rem;
+      color: #0066cc;
+      margin-bottom: 1rem;
+    }
+
+    .portal-card a {
       display: block;
-      margin: 0.5rem 0;
       padding: 0.5rem;
       background-color: #0066cc;
       color: white;
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
+      text-align: center;
+      transition: background-color 0.3s ease;
     }
 
-    #welcome a:hover {
+    .portal-card a:hover {
       background-color: #003366;
     }
 
@@ -302,7 +331,7 @@
         position: static;
         width: auto;
         box-shadow: none;
-        max-height: none; /* Remove scrolling for desktop */
+        max-height: none;
         overflow-y: visible;
       }
 
@@ -318,10 +347,16 @@
         font-size: 2.2rem;
       }
 
-      #welcome a {
-        display: inline-block;
-        margin: 0 1rem;
-        padding: 0.75rem 1.5rem;
+      .portal-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .portal-card {
+        flex: 1;
+        min-width: 250px;
+        max-width: 300px;
       }
 
       section h2 {
@@ -332,14 +367,18 @@
         font-size: 1.4rem;
       }
 
-      /* Grid layout for about, features, gallery, testimonials, and contact */
-      #about, #features, #gallery, #testimonials, #contact {
+      /* Grid layout for about, features, gallery, testimonials, contact, and portal sections */
+      #about, #features, #gallery, #testimonials, #contact,
+      #submit-results, #view-results, #teachers-credentials,
+      #fees-management, #student-registration, #student-database {
         display: none;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
       }
 
-      #about.active, #features.active, #gallery.active, #testimonials.active, #contact.active {
+      #about.active, #features.active, #gallery.active, #testimonials.active, #contact.active,
+      #submit-results.active, #view-results.active, #teachers-credentials.active,
+      #fees-management.active, #student-registration.active, #student-database.active {
         display: grid;
       }
     }
@@ -400,9 +439,74 @@
     <section id="welcome" class="active">
       <h2>Welcome to Chifundo Inclusive Secondary School</h2>
       <p>Empowering all students through inclusive education and digital innovation.</p>
-      <a href="#">Teachers Portal</a>
-      <a href="#">Students Results Portal</a>
-      <a href="#">Admin Portal</a>
+      <div class="portal-container">
+        <div class="portal-card">
+          <h3>Teachers Portal</h3>
+          <a href="#submit-results" data-section="submit-results">Enter Teachers Portal</a>
+        </div>
+        <div class="portal-card">
+          <h3>Students Results Portal</h3>
+          <a href="#view-results" data-section="view-results">Enter Results Portal</a>
+        </div>
+        <div class="portal-card">
+          <h3>Admin Portal</h3>
+          <a href="#teachers-credentials" data-section="teachers-credentials" class="admin-link" data-requires-password="true">Enter Admin Portal</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="submit-results" class="hidden">
+      <h2>Submit Results</h2>
+      <div>
+        <h3>Upload Student Results</h3>
+        <p>Teachers can submit student results for various subjects and terms. Use the form to upload grades and generate performance reports.</p>
+      </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
+    </section>
+
+    <section id="view-results" class="hidden">
+      <h2>View Results</h2>
+      <div>
+        <h3>Check Your Academic Results</h3>
+        <p>Students can access their academic results by logging in with their credentials. View detailed performance reports and track progress over time.</p>
+      </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
+    </section>
+
+    <section id="teachers-credentials" class="hidden">
+      <h2>Teachers Login Credentials</h2>
+      <div>
+        <h3>Manage Teacher Accounts</h3>
+        <p>Administrators can create, update, or reset login credentials for teachers to access the Teachers Portal and other systems.</p>
+      </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
+    </section>
+
+    <section id="fees-management" class="hidden">
+      <h2>Fees Management</h2>
+      <div>
+        <h3>Track and Manage Fees</h3>
+        <p>Administrators can manage student fee payments, generate invoices, and monitor outstanding balances.</p>
+      </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
+    </section>
+
+    <section id="student-registration" class="hidden">
+      <h2>Student Registration</h2>
+      <div>
+        <h3>Register New Students</h3>
+        <p>Administrators can register new students, capturing essential details such as personal information, academic history, and special needs requirements.</p>
+      </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
+    </section>
+
+    <section id="student-database" class="hidden">
+      <h2>Student Database Management</h2>
+      <div>
+        <h3>Manage Student Records</h3>
+        <p>Administrators can maintain and update the student database, including academic records, contact details, and special accommodations.</p>
+      </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
 
     <section id="about" class="hidden">
@@ -521,6 +625,8 @@
     const navLinks = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('main section');
     const homeLinks = document.querySelectorAll('.home-link');
+    const portalLinks = document.querySelectorAll('.portal-card a');
+    const adminLinks = document.querySelectorAll('.admin-link');
 
     // Function to show a specific section and hide all others
     function showSection(sectionId) {
@@ -551,6 +657,26 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         showSection('welcome');
+      });
+    });
+
+    // Add click event listeners to portal links
+    portalLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        const requiresPassword = link.getAttribute('data-requires-password');
+        
+        if (requiresPassword === 'true') {
+          const password = prompt('Please enter the password for the Admin Portal:');
+          if (password === 'chifu001') {
+            showSection(sectionId);
+          } else {
+            alert('Incorrect password. Access denied.');
+          }
+        } else {
+          showSection(sectionId);
+        }
       });
     });
 
