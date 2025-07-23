@@ -209,6 +209,22 @@
       margin-bottom: 0.5rem;
     }
 
+    /* Home Link Styles */
+    .home-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .home-link:hover {
+      background-color: #003366;
+    }
+
     /* Gallery Section Styles */
     #gallery {
       text-align: center;
@@ -353,6 +369,7 @@
     <nav>
       <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
       <ul>
+        <li><a href="#welcome" data-section="welcome">Home</a></li>
         <li><a href="#about" data-section="about">About</a></li>
         <li><a href="#features" data-section="features">Features</a></li>
         <li><a href="#gallery" data-section="gallery">Gallery</a></li>
@@ -363,7 +380,7 @@
   </header>
 
   <main>
-    <section id="welcome">
+    <section id="welcome" class="active">
       <h2>Welcome to Chifundo Inclusive Secondary School</h2>
       <p>Empowering all students through inclusive education and digital innovation.</p>
       <a href="#">Teachers Portal</a>
@@ -385,6 +402,7 @@
         <h3>Our Facilities</h3>
         <p>With state-of-the-art facilities and dedicated educators, we achieve outstanding academic results while focusing on character and community.</p>
       </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
 
     <section id="features" class="hidden">
@@ -401,6 +419,7 @@
         <h3>Report Generation</h3>
         <p>Generate comprehensive PDF reports to track academic progress and achievements.</p>
       </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
 
     <section id="gallery" class="hidden">
@@ -424,6 +443,7 @@
         <img src="https://i.postimg.cc/sXqTDxF6/IMG-20250722-WA0099.jpg" alt="School Image 12">
         <img src="https://i.postimg.cc/QNK6YQ5R/IMG-20250722-WA0100.jpg" alt="School Image 13">
       </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
 
     <section id="testimonials" class="hidden">
@@ -444,6 +464,7 @@
         <p>"As a student with special needs, I have found Chifundo to be the most welcoming and supportive environment."</p>
         <p>- F. Kamiza, Student</p>
       </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
 
     <section id="contact" class="hidden">
@@ -462,6 +483,7 @@
         <h3>Technical Support</h3>
         <p>Developer WhatsApp: <a href="https://wa.me/+265888866269">0888866269</a></p>
       </div>
+      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
   </main>
 
@@ -478,9 +500,10 @@
       document.querySelector('nav ul').classList.toggle('active');
     });
 
-    // Get all navigation links and sections
+    // Get all navigation links, sections, and home links
     const navLinks = document.querySelectorAll('nav ul li a');
-    const sections = document.querySelectorAll('main section:not(#welcome)');
+    const sections = document.querySelectorAll('main section');
+    const homeLinks = document.querySelectorAll('.home-link');
 
     // Function to show a specific section and hide others
     function showSection(sectionId) {
@@ -503,6 +526,14 @@
         showSection(sectionId);
         // Close the menu on mobile after clicking
         document.querySelector('nav ul').classList.remove('active');
+      });
+    });
+
+    // Add click event listeners to home links
+    homeLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('welcome');
       });
     });
   </script>
