@@ -505,17 +505,17 @@
     const sections = document.querySelectorAll('main section');
     const homeLinks = document.querySelectorAll('.home-link');
 
-    // Function to show a specific section and hide others
+    // Function to show a specific section and hide all others
     function showSection(sectionId) {
       sections.forEach(section => {
-        if (section.id === sectionId) {
-          section.classList.remove('hidden');
-          section.classList.add('active');
-        } else {
-          section.classList.remove('active');
-          section.classList.add('hidden');
-        }
+        section.classList.remove('active');
+        section.classList.add('hidden');
       });
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.remove('hidden');
+        targetSection.classList.add('active');
+      }
     }
 
     // Add click event listeners to navigation links
@@ -536,6 +536,9 @@
         showSection('welcome');
       });
     });
+
+    // Initialize with only welcome section visible
+    showSection('welcome');
   </script>
 </body>
 </html>
