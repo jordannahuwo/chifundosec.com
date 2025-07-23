@@ -98,6 +98,15 @@
       background-position: center;
       animation: slideshow 65s infinite;
       padding: 2rem;
+      display: none;
+    }
+
+    #welcome.active {
+      display: flex;
+    }
+
+    #welcome.hidden {
+      display: none;
     }
 
     /* Overlay for text readability */
@@ -295,6 +304,10 @@
 
       #welcome {
         min-height: 70vh;
+      }
+
+      #welcome.active {
+        display: flex;
       }
 
       #welcome h2 {
