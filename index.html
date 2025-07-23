@@ -270,7 +270,7 @@
       text-align: center;
     }
 
-    #gallery .gallery-grid {
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
@@ -367,18 +367,16 @@
         font-size: 1.4rem;
       }
 
-      /* Grid layout for about, features, gallery, testimonials, contact, and portal sections */
+      /* Grid layout for sections */
       #about, #features, #gallery, #testimonials, #contact,
-      #submit-results, #view-results, #teachers-credentials,
-      #fees-management, #student-registration, #student-database {
+      #submit-results, #view-results, #admin-portal {
         display: none;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
       }
 
       #about.active, #features.active, #gallery.active, #testimonials.active, #contact.active,
-      #submit-results.active, #view-results.active, #teachers-credentials.active,
-      #fees-management.active, #student-registration.active, #student-database.active {
+      #submit-results.active, #view-results.active, #admin-portal.active {
         display: grid;
       }
     }
@@ -450,7 +448,7 @@
         </div>
         <div class="portal-card">
           <h3>Admin Portal</h3>
-          <a href="#teachers-credentials" data-section="teachers-credentials" class="admin-link" data-requires-password="true">Enter Admin Portal</a>
+          <a href="#admin-portal" data-section="admin-portal" class="admin-link" data-requires-password="true">Enter Admin Portal</a>
         </div>
       </div>
     </section>
@@ -473,37 +471,22 @@
       <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
     </section>
 
-    <section id="teachers-credentials" class="hidden">
-      <h2>Teachers Login Credentials</h2>
+    <section id="admin-portal" class="hidden">
+      <h2>Admin Portal</h2>
       <div>
         <h3>Manage Teacher Accounts</h3>
         <p>Administrators can create, update, or reset login credentials for teachers to access the Teachers Portal and other systems.</p>
       </div>
-      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
-    </section>
-
-    <section id="fees-management" class="hidden">
-      <h2>Fees Management</h2>
       <div>
-        <h3>Track and Manage Fees</h3>
+        <h3>Fees Management</h3>
         <p>Administrators can manage student fee payments, generate invoices, and monitor outstanding balances.</p>
       </div>
-      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
-    </section>
-
-    <section id="student-registration" class="hidden">
-      <h2>Student Registration</h2>
       <div>
-        <h3>Register New Students</h3>
+        <h3>Student Registration</h3>
         <p>Administrators can register new students, capturing essential details such as personal information, academic history, and special needs requirements.</p>
       </div>
-      <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
-    </section>
-
-    <section id="student-database" class="hidden">
-      <h2>Student Database Management</h2>
       <div>
-        <h3>Manage Student Records</h3>
+        <h3>Student Database Management</h3>
         <p>Administrators can maintain and update the student database, including academic records, contact details, and special accommodations.</p>
       </div>
       <a href="#welcome" data-section="welcome" class="home-link">Back to Home</a>
@@ -626,7 +609,6 @@
     const sections = document.querySelectorAll('main section');
     const homeLinks = document.querySelectorAll('.home-link');
     const portalLinks = document.querySelectorAll('.portal-card a');
-    const adminLinks = document.querySelectorAll('.admin-link');
 
     // Function to show a specific section and hide all others
     function showSection(sectionId) {
