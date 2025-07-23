@@ -66,6 +66,8 @@
       right: 0;
       width: 200px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      max-height: 80vh; /* Limit height to 80% of viewport height */
+      overflow-y: auto; /* Enable vertical scrolling */
     }
 
     nav ul.active {
@@ -300,6 +302,8 @@
         position: static;
         width: auto;
         box-shadow: none;
+        max-height: none; /* Remove scrolling for desktop */
+        overflow-y: visible;
       }
 
       #welcome {
