@@ -206,19 +206,23 @@
 
     #gallery .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
     }
 
-    #gallery img, #gallery video {
+    #gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      object-fit: contain;
+    }
+
+    #gallery video {
       width: 100%;
       height: auto;
       border-radius: 5px;
       object-fit: cover;
-      max-height: 200px;
-    }
-
-    #gallery video {
       max-height: 300px;
     }
 
@@ -288,7 +292,7 @@
       /* Grid layout for about, features, gallery, testimonials, and contact */
       #about, #features, #gallery, #testimonials, #contact {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
       }
     }
