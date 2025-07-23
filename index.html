@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chifundo Inclusive Private Secondary School</title>
+  <title>Chifundo Inclusive Secondary School</title>
   <style>
     /* Reset default styles */
     * {
@@ -38,11 +38,31 @@
     }
 
     /* Navigation Styles */
+    nav {
+      position: relative;
+    }
+
+    .menu-toggle {
+      display: block;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: #0066cc;
+      cursor: pointer;
+      margin: 0 auto;
+    }
+
     nav ul {
       list-style: none;
-      display: flex;
+      display: none;
       flex-direction: column;
       gap: 1rem;
+      background-color: #f4f4f4;
+      padding: 1rem;
+    }
+
+    nav ul.active {
+      display: flex;
     }
 
     nav ul li a {
@@ -100,8 +120,9 @@
     }
 
     #welcome a {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
       background-color: #0066cc;
       color: white;
       text-decoration: none;
@@ -171,25 +192,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Portal Links */
-    #portals {
-      text-align: center;
-    }
-
-    #portals a {
-      display: block;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      background-color: #0066cc;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-
-    #portals a:hover {
-      background-color: #003366;
-    }
-
     /* Footer Styles */
     footer {
       text-align: center;
@@ -212,10 +214,16 @@
         font-size: 2.2rem;
       }
 
+      .menu-toggle {
+        display: none;
+      }
+
       nav ul {
+        display: flex;
         flex-direction: row;
         justify-content: center;
         gap: 2rem;
+        padding: 0;
       }
 
       #welcome {
@@ -226,18 +234,18 @@
         font-size: 2.2rem;
       }
 
+      #welcome a {
+        display: inline-block;
+        margin: 0 1rem;
+        padding: 0.75rem 1.5rem;
+      }
+
       section h2 {
         font-size: 2rem;
       }
 
       section h3 {
         font-size: 1.4rem;
-      }
-
-      #portals a {
-        display: inline-block;
-        margin: 0 1rem;
-        padding: 0.75rem 1.5rem;
       }
 
       /* Grid layout for about, features, testimonials, and contact */
@@ -285,9 +293,10 @@
 </head>
 <body>
   <header>
-    <img src="https://i.postimg.cc/1tWcX4xx/IMG-20250721-WA0039.jpg" alt="Chifundo Inclusive Private Secondary School Logo" class="logo">
-    <h1>Chifundo Inclusive Private Secondary School</h1>
+    <img src="https://i.postimg.cc/1tWcX4xx/IMG-20250721-WA0039.jpg" alt="Chifundo Inclusive Secondary School Logo" class="logo">
+    <h1>Chifundo Inclusive Secondary School</h1>
     <nav>
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
@@ -299,16 +308,18 @@
 
   <main>
     <section id="welcome">
-      <h2>Welcome to Chifundo Inclusive Private Secondary School</h2>
+      <h2>Welcome to Chifundo Inclusive Secondary School</h2>
       <p>Empowering all students through inclusive education and digital innovation.</p>
-      <a href="#portals">Access Portals</a>
+      <a href="#">Teachers Portal</a>
+      <a href="#">Students Results Portal</a>
+      <a href="#">Admin Portal</a>
     </section>
 
     <section id="about">
       <h2>About Our School</h2>
       <div>
         <h3>Our Mission</h3>
-        <p>Chifundo Inclusive Private Secondary School, established in 2005, is committed to providing quality education for all students, including those with special needs.</p>
+        <p>Chifundo Inclusive Secondary School, established in 2005, is committed to providing quality education for all students, including those with special needs.</p>
       </div>
       <div>
         <h3>Inclusive Approach</h3>
@@ -336,13 +347,6 @@
       </div>
     </section>
 
-    <section id="portals">
-      <h2>Access Your Portal</h2>
-      <a href="#">Teachers Portal</a>
-      <a href="#">Students Results Portal</a>
-      <a href="#">Admin Portal</a>
-    </section>
-
     <section id="testimonials">
       <h2>What Our Community Says</h2>
       <div>
@@ -367,7 +371,7 @@
       <h2>Contact Us</h2>
       <div>
         <h3>School Address</h3>
-        <p>Chifundo Inclusive Private Secondary School<br>P.O. Box 122<br>Ngabu, Chikwawa</p>
+        <p>Chifundo Inclusive Secondary School<br>P.O. Box 122<br>Ngabu, Chikwawa</p>
       </div>
       <div>
         <h3>Contact Information</h3>
@@ -381,10 +385,17 @@
   </main>
 
   <footer>
-    <p>Chifundo Inclusive Private Secondary School</p>
+    <p>Chifundo Inclusive Secondary School</p>
     <p>Education for All Since 2005</p>
-    <p>© Chifundo Inclusive Private Secondary School. All rights reserved.</p>
+    <p>© Chifundo Inclusive Secondary School. All rights reserved.</p>
     <p>Designed with ❤️ for our students</p>
   </footer>
+
+  <script>
+    // JavaScript for toggling the menu
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
