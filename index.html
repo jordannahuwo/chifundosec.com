@@ -639,7 +639,10 @@
     homeLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        showSection('welcome');
+        const sectionId = link.getAttribute('data-section');
+        if (sectionId) {
+          showSection(sectionId);
+        }
       });
     });
 
